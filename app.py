@@ -36,7 +36,7 @@ class model_input(BaseModel):
     ethnicity:str
     jaundice:str
     austim:str
-    contry_of_re:str
+    contry_of_res:str
     used_app_before:str
     relation:str
     result:int
