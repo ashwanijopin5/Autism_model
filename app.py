@@ -61,7 +61,12 @@ def predict_autism(data:model_input):
     ] 
     for col in catgorical_colmns:
         encoder=encoders[col]
-        input_dist[col]=encoder.transform([input_dist[col]])[0]       
+        value=input_dist[col]
+        if value not in encoder.classes_:
+            return {
+                "error":f"unkowen Category {value} for coulmn {col}"
+            }
+         input_dist[col]=encoder.transform([input_dist[col]])[0]       
    
     input_df=pd.DataFrame([input_dist])
     prediction=model.predict(input_df)    
